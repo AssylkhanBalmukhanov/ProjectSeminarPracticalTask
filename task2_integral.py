@@ -1,5 +1,5 @@
 """
-Task 2 – Numerical Integration with Monte Carlo  ⭐⭐
+Task 2 – Numerical Integration with Monte Carlo  
 =====================================================
 
 IDEA:
@@ -20,7 +20,6 @@ Analytical answers (for verification):
   ∫₀^π sin(x)     dx  =  2.0
   ∫₁^³  e^x        dx  =  e³ - e  ≈ 17.3673
 """
-
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -43,12 +42,15 @@ def monte_carlo_integrate(f, a: float, b: float, n_samples: int = 100_000, seed:
     rng = np.random.default_rng(seed)
 
     # TODO 1: Sample n_samples x values uniformly between a and b
+    # HINT: Use `rng.uniform()` again, but this time use your bounds `a` and `b`.
     x = ...
 
     # TODO 2: Evaluate f at every sampled x
+    # HINT: You can pass your entire NumPy array `x` directly into the function `f(x)` to evaluate them all at once.
     fx = ...
 
     # TODO 3: Apply the Monte Carlo integration formula
+    # HINT: The formula is (b - a) * mean(f(x)). You can instantly find the mean using `np.mean()`.
     integral = ...
 
     return integral
@@ -59,20 +61,22 @@ def monte_carlo_integrate(f, a: float, b: float, n_samples: int = 100_000, seed:
 def integral_x_squared() -> float:
     """Return the Monte Carlo estimate of ∫₀¹ x² dx  (answer: 1/3)."""
     # TODO: Call monte_carlo_integrate with the right function and bounds
+    # HINT: Use a lambda function for x² (e.g., `lambda x: x**2`). Bounds are a=0, b=1.
     return monte_carlo_integrate(...)
 
 
 def integral_sin() -> float:
     """Return the Monte Carlo estimate of ∫₀^π sin(x) dx  (answer: 2.0)."""
     # TODO: Call monte_carlo_integrate with the right function and bounds
+    # HINT: Pass `np.sin` as the function. For π, use `np.pi`.
     return monte_carlo_integrate(...)
 
 
 def integral_exp() -> float:
     """Return the Monte Carlo estimate of ∫₁³ eˣ dx  (answer ≈ 17.3673)."""
     # TODO: Call monte_carlo_integrate with the right function and bounds
+    # HINT: Pass `np.exp` as the function. Bounds are a=1, b=3.
     return monte_carlo_integrate(...)
-
 
 # ── Convergence plot (optional) ──────────────────────────────────────────────
 
