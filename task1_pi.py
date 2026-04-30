@@ -1,5 +1,5 @@
 """
-Task 1 – Estimating π with Monte Carlo  ⭐
+Task 1 – Estimating π with Monte Carlo  
 ==========================================
 
 IDEA:
@@ -15,6 +15,9 @@ YOUR JOB:
 
 Run this file directly to see your result and an optional plot.
 """
+
+import numpy as np
+import matplotlib.pyplot as plt
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -39,20 +42,26 @@ def estimate_pi(n_samples: int = 100_000, seed: int = 42) -> float:
     rng = np.random.default_rng(seed)
 
     # TODO 1: Generate n_samples random x values in the range [-1, 1]
+    # HINT: Use `rng.uniform(low, high, size)` to generate an array of random numbers instantly.
     x = ...
 
     # TODO 2: Generate n_samples random y values in the range [-1, 1]
+    # HINT: Same as above, just for the y-coordinates.
     y = ...
 
     # TODO 3: Compute the distance of each point from the origin (0, 0)
     #         Hint: distance² = x² + y²
+    # EXTRA HINT: In NumPy, you can use the `**` operator on the whole array to square all numbers at once!
     distance_squared = ...
 
     # TODO 4: Count how many points are INSIDE the unit circle
     #         (distance² <= 1)
+    # HINT: `distance_squared <= 1` creates an array of True/False values.
+    # You can use `np.sum()` on this boolean array to count how many 'True' values there are.
     inside = ...
 
     # TODO 5: Estimate π using the ratio formula described above
+    # HINT: The area of the square is 4. Multiply 4 by the ratio of (points inside / total points).
     pi_estimate = ...
 
     return pi_estimate
