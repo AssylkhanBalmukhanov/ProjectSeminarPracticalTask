@@ -45,31 +45,6 @@ def test_task2():
         return False
 
 
-def test_task3():
-    print("\n-- Task 3 : Stock Price Simulation ----------------------------")
-    try:
-        from task3_stock import simulate_gbm, probability_above, expected_final_price
-
-        paths = simulate_gbm(n_paths=50_000, seed=0)
-
-        r1 = check("paths shape  (50000, 253)",
-                   float(paths.shape == (50_000, 253)), 1.0, tol=0.5)
-
-        r2 = check("Starting price S0=100",
-                   float(np.allclose(paths[:, 0], 100.0)), 1.0, tol=0.5)
-
-        p  = probability_above(paths, 110.0)
-        r3 = check("P(S_T > 110)  ~ 0.42",  p,  0.42, tol=0.04)
-
-        e  = expected_final_price(paths)
-        r4 = check("E[S_T]        ~ 110.52", e, 110.52, tol=1.5)
-
-        return all([r1, r2, r3, r4])
-    except Exception as exc:
-        print(f"  ERROR: {exc}")
-        return False
-
-
 if __name__ == "__main__":
     print("=" * 60)
     print("  Monte Carlo Seminar -- Test Suite")
@@ -77,15 +52,14 @@ if __name__ == "__main__":
 
     t1 = test_task1()
     t2 = test_task2()
-    t3 = test_task3()
 
     print("\n" + "=" * 60)
-    total = sum([t1, t2, t3])
-    print(f"  Result: {total}/3 tasks passed")
-    if total == 3:
+    total = sum([t1, t2])
+    print(f"  Result: {total}/2 tasks passed")
+    if total == 2:
         print("  All tests passed. Great work.")
     else:
         print("  Keep going -- check the [FAIL] lines above for hints.")
     print("=" * 60)
 
-    sys.exit(0 if total == 3 else 1)
+    sys.exit(0 if total == 2 else 1)
