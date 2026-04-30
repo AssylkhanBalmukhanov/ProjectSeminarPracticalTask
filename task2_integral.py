@@ -15,10 +15,6 @@ YOUR JOB:
   Implement `monte_carlo_integrate` for an arbitrary function f.
   Then use it to solve two specific integrals below.
 
-Analytical answers (for verification):
-  ∫₀¹  x²         dx  =  1/3   ≈ 0.3333
-  ∫₀^π sin(x)     dx  =  2.0
-  ∫₁^³  e^x        dx  =  e³ - e  ≈ 17.3673
 """
 import numpy as np
 import matplotlib.pyplot as plt
